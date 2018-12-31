@@ -76,7 +76,7 @@ class RRD
     {
         $options = array(
             "--step", "300",
-            "DS:temperature:GAUGE:600:0:U",
+            "DS:temperature:GAUGE:600:-50:U",
             "DS:voltage:GAUGE:600:0:U",
             "DS:intensity:GAUGE:600:0:U",
             "RRA:AVERAGE:0.5:1:576",
