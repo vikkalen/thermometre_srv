@@ -75,6 +75,7 @@ $app->get('/graph/{probe}/{periode}/', function (Request $request, Response $res
         return $response->withStatus(422);
     }
 
+    date_default_timezone_set($this->settings['tz']);
     $graph = $this->rrd->graph($probe, $periode, $width, $height, $this->json->read());
 
     return $response->withJson(['data' => ['mediatype' => 'image/png', 'data' => base64_encode($graph)], 'status' => 'OK']);

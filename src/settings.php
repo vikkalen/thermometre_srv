@@ -23,6 +23,8 @@ return [
             'path' => __DIR__ . '/../storage/thermometre.json' ,
         ],
 
+        'tz' => isset($_ENV['TZ']) ? $_ENV['TZ'] : 'UTC',
+
         'auth_token' => isset($_ENV['THERMOMETRE_TOKEN']) ? $_ENV['THERMOMETRE_TOKEN'] : '',
     ],
 ];
