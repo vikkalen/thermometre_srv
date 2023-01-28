@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\Core;
 use \Exception;
 
 class RRD
@@ -46,8 +46,6 @@ class RRD
 
     public function graph($datasource, $period, $width, $height, $options)
     {
-        $this->open($sonde);
-
         $graphObj = new \RRDGraph('-');
         $graphObj->setOptions($this->getGraphOptions($datasource, $period, $width, $height, $options));
         $data = $graphObj->saveVerbose();
