@@ -38,7 +38,8 @@ class RRD
         $info = rrd_info($this->getFilename($sonde));
         foreach($info as &$value)
         {
-            if(is_float($value) && (is_nan($value) || is_infinite($value))) $value = null;
+           if(is_float($value) && (is_nan($value) || is_infinite($value))) $value = null;
+           else if($value === 'U') $value = null;
         }
 
         return $info;

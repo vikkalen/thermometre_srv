@@ -19,7 +19,7 @@ return function (ContainerBuilder $containerBuilder) {
                 'logger' => [
                     'name' => 'slim-app',
                     'path' => isset($_ENV['docker']) ? 'php://stderr' : __DIR__ . '/../logs/app.log',
-                    'level' => Logger::DEBUG,
+                    'level' => Logger::INFO,
                 ],
                 'rrd' => [
                     'path' => __DIR__ . '/../storage' ,
@@ -31,7 +31,17 @@ return function (ContainerBuilder $containerBuilder) {
 
                 'json' => [
                     'path' => __DIR__ . '/../storage/thermometre.json' ,
-                ],
+		],
+
+		'mqtt' => [
+		    'host' => $_ENV['MQTT_HOST'] ?? null,
+		    'port' => $_ENV['MQTT_PORT'] ?? null,
+		    'client_id' => $_ENV['MQTT_CLIENT_ID'] ?? null,
+		    'username' => $_ENV['MQTT_USERNAME'] ?? null,
+		    'password' => $_ENV['MQTT_PASSWORD'] ?? null,
+		    'discovery_topic' => $_ENV['MQTT_DISCOVERY_TOPIC'] ?? null,
+		    'state_topic' => $_ENV['MQTT_STATE_TOPIC'] ?? null,
+		],
 
                 'tz' => isset($_ENV['TZ']) ? $_ENV['TZ'] : 'UTC',
 
